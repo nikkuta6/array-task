@@ -2,6 +2,8 @@ package by.pranovich.task1.service.impl;
 
 import by.pranovich.task1.entity.CustomArray;
 import by.pranovich.task1.exception.CustomArrayException;
+import by.pranovich.task1.factory.CustomArrayFactory;
+import by.pranovich.task1.factory.impl.CustomArrayFactoryImpl;
 import by.pranovich.task1.service.CustomArrayCalculator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,15 +12,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CustomArrayCalculatorImplTest {
     private CustomArrayCalculator calculator;
+    private CustomArrayFactory factory;
     private CustomArray customArray;
 
     @BeforeEach
     void setUp() throws CustomArrayException {
         calculator = new CustomArrayCalculatorImpl();
-        customArray = CustomArray.newBuilder()
-                .setId(1)
-                .setArray(new int[]{-7, 0, 1, 44, 13, 0, 9})
-                .build();
+        factory = new CustomArrayFactoryImpl();
+        customArray = factory.createCustomArray(1, new int[]{-7, 0, 1, 44, 13, 0, 9});
     }
 
     @Test

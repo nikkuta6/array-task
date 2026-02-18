@@ -2,12 +2,15 @@ package by.pranovich.task1.service.impl;
 
 import by.pranovich.task1.entity.CustomArray;
 import by.pranovich.task1.exception.CustomArrayException;
+import by.pranovich.task1.factory.CustomArrayFactory;
+import by.pranovich.task1.factory.impl.CustomArrayFactoryImpl;
 import by.pranovich.task1.service.CustomArrayManipulator;
 import org.jetbrains.annotations.NotNull;
 
 public class CustomArrayManipulatorImpl implements CustomArrayManipulator {
     @Override
     public CustomArray replaceElByIndex(int index, int el, @NotNull CustomArray customArray) throws CustomArrayException {
+        CustomArrayFactory factory = new CustomArrayFactoryImpl();
         int[] arr = customArray.getArray();
 
         if (index < 0 || index >= arr.length) {
@@ -16,14 +19,12 @@ public class CustomArrayManipulatorImpl implements CustomArrayManipulator {
 
         arr[index] = el;
 
-        return CustomArray.newBuilder()
-                .setId(customArray.getId())
-                .setArray(arr)
-                .build();
+        return factory.createCustomArray(customArray.getId(), arr);
     }
 
     @Override
     public CustomArray replaceFirstElByValue(int value, int el, @NotNull CustomArray customArray) throws CustomArrayException {
+        CustomArrayFactory factory = new CustomArrayFactoryImpl();
         int[] arr = customArray.getArray();
 
         boolean hasValue = false;
@@ -42,14 +43,12 @@ public class CustomArrayManipulatorImpl implements CustomArrayManipulator {
             throw new CustomArrayException("The old and new elements are the same! Operation has no sense!");
         }
 
-        return CustomArray.newBuilder()
-                .setId(customArray.getId())
-                .setArray(arr)
-                .build();
+        return factory.createCustomArray(customArray.getId(), arr);
     }
 
     @Override
     public CustomArray replaceAllElByValue(int value, int el, @NotNull CustomArray customArray) throws CustomArrayException {
+        CustomArrayFactory factory = new CustomArrayFactoryImpl();
         int[] arr = customArray.getArray();
 
         boolean hasValue = false;
@@ -67,9 +66,6 @@ public class CustomArrayManipulatorImpl implements CustomArrayManipulator {
             throw new CustomArrayException("The old and new elements are the same! Operation has no sense!");
         }
 
-        return CustomArray.newBuilder()
-                .setId(customArray.getId())
-                .setArray(arr)
-                .build();
+        return factory.createCustomArray(customArray.getId(), arr);
     }
 }

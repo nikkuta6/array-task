@@ -1,8 +1,6 @@
 package by.pranovich.task1.entity;
 
 import by.pranovich.task1.exception.CustomArrayException;
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 
 
 import java.util.Arrays;
@@ -12,51 +10,37 @@ public class CustomArray implements Cloneable {
     private long id;
     private int[] array;
 
-    private CustomArray() {
+    public CustomArray(long id, int[] array) throws CustomArrayException {
+        if (id <= 0) {
+            throw new CustomArrayException("Id can't be less or equals to 0!");
+        }
+        if (array == null || array.length == 0) {
+            throw new CustomArrayException("Array can't be null or empty!");
+        }
+        this.id = id;
+        this.array = array.clone();
     }
 
     public long getId() {
         return id;
     }
 
+    public void setId(long id) throws CustomArrayException {
+        if (id <= 0) {
+            throw new CustomArrayException("Id can't be less or equals to 0!");
+        }
+        this.id = id;
+    }
+
     public int[] getArray() {
         return array.clone();
     }
 
-    @Contract(" -> new")
-    public static @NotNull Builder newBuilder() {
-        return new CustomArray().new Builder();
-    }
-
-    public class Builder {
-
-        private Builder() {
+    public void setArray(int[] array) throws CustomArrayException {
+        if (array == null || array.length == 0) {
+            throw new CustomArrayException("Array can't be null or empty!");
         }
-
-        public Builder setId(long id) throws CustomArrayException {
-            if (id <= 0) {
-                throw new CustomArrayException("Id can't be less or equals to 0!");
-            }
-            CustomArray.this.id = id;
-            return this;
-        }
-
-        public Builder setArray(int[] arr) throws CustomArrayException {
-            if (arr == null || arr.length == 0) {
-                throw new CustomArrayException("Incorrect data: array can't be empty or null!");
-            }
-
-            CustomArray.this.array = arr.clone();
-            return this;
-        }
-
-        public CustomArray build() throws CustomArrayException {
-            if (CustomArray.this.array == null || CustomArray.this.array.length == 0) {
-                throw new CustomArrayException("Incorrect data: array can't be empty or null!");
-            }
-
-            return CustomArray.this;
-        }
+        this.array = array.clone();
     }
 
     @Override
@@ -69,7 +53,7 @@ public class CustomArray implements Cloneable {
         }
         CustomArray other = (CustomArray) o;
 
-        return id == other.id && Arrays.equals(this.array, other.array);
+        return (id == other.id && Arrays.equals(this.array, other.array));
     }
 
     @Override
