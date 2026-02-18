@@ -5,5 +5,5 @@ import by.pranovich.task1.exception.CustomArrayException;
 import java.util.List;
 
 public interface CustomArrayFileReader {
-    List<String> readFile(String path) throws CustomArrayException;
+    List<String> readFileLines(String filePath) throws CustomArrayException;
 }

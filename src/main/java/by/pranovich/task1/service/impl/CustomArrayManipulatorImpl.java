@@ -9,7 +9,11 @@ import org.jetbrains.annotations.NotNull;
 
 public class CustomArrayManipulatorImpl implements CustomArrayManipulator {
     @Override
-    public CustomArray replaceElByIndex(int index, int el, @NotNull CustomArray customArray) throws CustomArrayException {
+    public CustomArray replaceElByIndex(int index, int el, CustomArray customArray) throws CustomArrayException {
+        if (customArray == null) {
+            throw new CustomArrayException("Array can't be null!");
+        }
+
         CustomArrayFactory factory = new CustomArrayFactoryImpl();
         int[] arr = customArray.getArray();
 
@@ -23,7 +27,11 @@ public class CustomArrayManipulatorImpl implements CustomArrayManipulator {
     }
 
     @Override
-    public CustomArray replaceFirstElByValue(int value, int el, @NotNull CustomArray customArray) throws CustomArrayException {
+    public CustomArray replaceFirstElByValue(int value, int el, CustomArray customArray) throws CustomArrayException {
+        if (customArray == null) {
+            throw new CustomArrayException("Array can't be null!");
+        }
+
         CustomArrayFactory factory = new CustomArrayFactoryImpl();
         int[] arr = customArray.getArray();
 
@@ -47,7 +55,11 @@ public class CustomArrayManipulatorImpl implements CustomArrayManipulator {
     }
 
     @Override
-    public CustomArray replaceAllElByValue(int value, int el, @NotNull CustomArray customArray) throws CustomArrayException {
+    public CustomArray replaceAllElByValue(int value, int el, CustomArray customArray) throws CustomArrayException {
+        if (customArray == null) {
+            throw new CustomArrayException("Array can't be null!");
+        }
+
         CustomArrayFactory factory = new CustomArrayFactoryImpl();
         int[] arr = customArray.getArray();
 

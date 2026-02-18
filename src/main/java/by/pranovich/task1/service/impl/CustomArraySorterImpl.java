@@ -9,7 +9,11 @@ import org.jetbrains.annotations.NotNull;
 
 public class CustomArraySorterImpl implements CustomArraySorter {
     @Override
-    public CustomArray bubbleSort(@NotNull CustomArray customArray) throws CustomArrayException {
+    public CustomArray bubbleSort(CustomArray customArray) throws CustomArrayException {
+        if (customArray == null) {
+            throw new CustomArrayException("Array can't be null!");
+        }
+
         CustomArrayFactory factory = new CustomArrayFactoryImpl();
         int[] arr = customArray.getArray();
 
@@ -30,7 +34,11 @@ public class CustomArraySorterImpl implements CustomArraySorter {
     }
 
     @Override
-    public CustomArray insertionSort(@NotNull CustomArray customArray) throws CustomArrayException {
+    public CustomArray insertionSort(CustomArray customArray) throws CustomArrayException {
+        if (customArray == null) {
+            throw new CustomArrayException("Array can't be null!");
+        }
+
         CustomArrayFactory factory = new CustomArrayFactoryImpl();
         int[] arr = customArray.getArray();
 
@@ -48,7 +56,11 @@ public class CustomArraySorterImpl implements CustomArraySorter {
     }
 
     @Override
-    public CustomArray selectionSort(@NotNull CustomArray customArray) throws CustomArrayException {
+    public CustomArray selectionSort(CustomArray customArray) throws CustomArrayException {
+        if (customArray == null) {
+            throw new CustomArrayException("Array can't be null!");
+        }
+
         CustomArrayFactory factory = new CustomArrayFactoryImpl();
         int[] arr = customArray.getArray();
 
@@ -65,8 +77,6 @@ public class CustomArraySorterImpl implements CustomArraySorter {
             arr[i] = arr[minIndex];
             arr[minIndex] = temp;
         }
-
-        return factory.createCustomArray(customArray.getId(),arr);
+        return factory.createCustomArray(customArray.getId(), arr);
     }
-
 }

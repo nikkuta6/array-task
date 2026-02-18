@@ -23,7 +23,7 @@ public class CustomArrayCalculatorImplTest {
     }
 
     @Test
-    void calculateSumTest() {
+    void calculateSumTest() throws CustomArrayException {
         int expected = 60;
         int actual = calculator.calculateSum(customArray);
 
@@ -31,7 +31,7 @@ public class CustomArrayCalculatorImplTest {
     }
 
     @Test
-    void calculateAvgValueTest() {
+    void calculateAvgValueTest() throws CustomArrayException {
         double expected = 8.571428;
         double actual = calculator.calculateAvgValue(customArray);
         double delta = 0.000001;
@@ -40,7 +40,7 @@ public class CustomArrayCalculatorImplTest {
     }
 
     @Test
-    void calculatePositiveCountTest() {
+    void calculatePositiveCountTest() throws CustomArrayException {
         int expected = 4;
         int actual = calculator.calculatePositiveCount(customArray);
 
@@ -48,7 +48,7 @@ public class CustomArrayCalculatorImplTest {
     }
 
     @Test
-    void calculateNegativeCountTest() {
+    void calculateNegativeCountTest() throws CustomArrayException {
         int expected = 1;
         int actual = calculator.calculateNegativeCount(customArray);
 
@@ -56,7 +56,7 @@ public class CustomArrayCalculatorImplTest {
     }
 
     @Test
-    void calculateZeroCountTest() {
+    void calculateZeroCountTest() throws CustomArrayException {
         int expected = 2;
         int actual = calculator.calculateZeroCount(customArray);
 

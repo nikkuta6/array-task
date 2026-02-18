@@ -1,12 +1,17 @@
 package by.pranovich.task1.service.impl;
 
 import by.pranovich.task1.entity.CustomArray;
+import by.pranovich.task1.exception.CustomArrayException;
 import by.pranovich.task1.service.CustomArrayFinder;
 import org.jetbrains.annotations.NotNull;
 
 public class CustomArrayFinderImpl implements CustomArrayFinder {
     @Override
-    public int findMin(@NotNull CustomArray customArray) {
+    public int findMin(CustomArray customArray) throws CustomArrayException {
+        if (customArray == null) {
+            throw new CustomArrayException("Array can't be null!");
+        }
+
         int[] arr = customArray.getArray();
 
         int min = arr[0];
@@ -21,7 +26,11 @@ public class CustomArrayFinderImpl implements CustomArrayFinder {
     }
 
     @Override
-    public int findMax(@NotNull CustomArray customArray) {
+    public int findMax(CustomArray customArray) throws CustomArrayException {
+        if (customArray == null) {
+            throw new CustomArrayException("Array can't be null!");
+        }
+
         int[] arr = customArray.getArray();
 
         int max = arr[0];

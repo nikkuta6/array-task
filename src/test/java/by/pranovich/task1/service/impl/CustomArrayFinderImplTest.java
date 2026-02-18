@@ -23,7 +23,7 @@ public class CustomArrayFinderImplTest {
     }
 
     @Test
-    void findMinTest() {
+    void findMinTest() throws CustomArrayException {
         int expected = -14;
         int actual = finder.findMin(customArray);
 
@@ -31,7 +31,7 @@ public class CustomArrayFinderImplTest {
     }
 
     @Test
-    void findMaxTest() {
+    void findMaxTest() throws CustomArrayException {
         int expected = 88;
         int actual = finder.findMax(customArray);
 

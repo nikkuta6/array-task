@@ -1,12 +1,17 @@
 package by.pranovich.task1.service.impl;
 
 import by.pranovich.task1.entity.CustomArray;
+import by.pranovich.task1.exception.CustomArrayException;
 import by.pranovich.task1.service.CustomArrayCalculator;
 import org.jetbrains.annotations.NotNull;
 
 public class CustomArrayCalculatorImpl implements CustomArrayCalculator {
     @Override
-    public int calculateSum(@NotNull CustomArray customArray) {
+    public int calculateSum(CustomArray customArray) throws CustomArrayException {
+        if (customArray == null) {
+            throw new CustomArrayException("Array can't be null!");
+        }
+
         int sum = 0;
         int[] arr = customArray.getArray();
 
@@ -18,7 +23,11 @@ public class CustomArrayCalculatorImpl implements CustomArrayCalculator {
     }
 
     @Override
-    public double calculateAvgValue(@NotNull CustomArray customArray) {
+    public double calculateAvgValue(CustomArray customArray) throws CustomArrayException {
+        if (customArray == null) {
+            throw new CustomArrayException("Array can't be null!");
+        }
+
         int sum = 0;
         int[] arr = customArray.getArray();
 
@@ -30,7 +39,11 @@ public class CustomArrayCalculatorImpl implements CustomArrayCalculator {
     }
 
     @Override
-    public int calculatePositiveCount(@NotNull CustomArray customArray) {
+    public int calculatePositiveCount(CustomArray customArray) throws CustomArrayException {
+        if (customArray == null) {
+            throw new CustomArrayException("Array can't be null!");
+        }
+
         int count = 0;
         int[] arr = customArray.getArray();
 
@@ -44,7 +57,11 @@ public class CustomArrayCalculatorImpl implements CustomArrayCalculator {
     }
 
     @Override
-    public int calculateNegativeCount(@NotNull CustomArray customArray) {
+    public int calculateNegativeCount(CustomArray customArray) throws CustomArrayException {
+        if (customArray == null) {
+            throw new CustomArrayException("Array can't be null!");
+        }
+
         int count = 0;
         int[] arr = customArray.getArray();
 
@@ -58,7 +75,11 @@ public class CustomArrayCalculatorImpl implements CustomArrayCalculator {
     }
 
     @Override
-    public int calculateZeroCount(@NotNull CustomArray customArray) {
+    public int calculateZeroCount(CustomArray customArray) throws CustomArrayException {
+        if (customArray == null) {
+            throw new CustomArrayException("Array can't be null!");
+        }
+
         int count = 0;
         int[] arr = customArray.getArray();
 
